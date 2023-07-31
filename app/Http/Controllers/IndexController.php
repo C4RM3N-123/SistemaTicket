@@ -6,6 +6,7 @@ class IndexController extends Controller
 	public function actionIndex()
 	{
         return view('index/index');
+		#return view('index/admin');
 	}
 }
 ?>

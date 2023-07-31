@@ -39,16 +39,16 @@
 	<!-- Navbar -->
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 		<!-- Left navbar links -->
-		<ul class="navbar-nav">
+		<!--<ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 			</li>
-		</ul>
+		</ul>-->
 
 		<!-- Right navbar links -->
 		<ul class="navbar-nav ml-auto">
 			<!-- Notifications Dropdown Menu -->
-			<li class="nav-item dropdown">
+			<!--<li class="nav-item dropdown">
 				<a class="nav-link" data-toggle="dropdown" href="#">
 					<i class="far fa-bell"></i>
 					<span class="badge badge-warning navbar-badge">15</span>
@@ -73,12 +73,40 @@
 					<div class="dropdown-divider"></div>
 					<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 				</div>
-			</li>
-			<li class="nav-item">
+			</li> -->
+
+			<nav class="navbar navbar-expand-md navbar-light bg-light">
+				<div class="container">
+
+					<a class="navbar-brand" href="#"></a>
+
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<!-- MENU BARS -->
+					<div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+						<ul class="navbar-nav">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-bars"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="{{(route('actionEditar'))}}">Cambiar Contraseña</a>
+									<a class="dropdown-item" href="{{(route('actionLoguear'))}}">Cerrar Sesión</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!--<li class="nav-item">
 				<a class="nav-link" data-widget="fullscreen" href="#" role="button">
 					<i class="fas fa-expand-arrows-alt"></i>
 				</a>
-			</li>
+			</li>-->
+			
+
 		</ul>
 	</nav>
 	<!-- /.navbar -->
@@ -86,10 +114,10 @@
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
-		<a href="index3.html" class="brand-link">
+		<!--<a href="index3.html" class="brand-link">
 			<img src="{{asset('plugins/adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 			<span class="brand-text font-weight-light">AdminLTE 3</span>
-		</a>
+		</a>-->
 
 		<!-- Sidebar -->
 		<div class="sidebar">
@@ -99,7 +127,7 @@
 					<img src="{{asset('plugins/adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
-					<a href="#" class="d-block">Alexander Pierce</a>
+					<a href="#" class="d-block">Usuario</a>
 				</div>
 			</div>
 
@@ -118,9 +146,17 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="./index.html" class="nav-link active">
+								<a href="{{(route('actionEscribir'))}}" class="nav-link active">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Página principal</p>
+									<p>Generar Ticket</p>
+								</a>
+							</li>
+						</ul>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="{{(route('actionEstado'))}}" class="nav-link active">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Estado de Ticket</p>
 								</a>
 							</li>
 						</ul>
@@ -211,21 +247,11 @@
 
 <script src="{{asset('plugins/pnotify/pnotify.custom.min.js')}}"></script>
 <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
-
 <script>
-	var _urlBase = '{{url('/')}}';
-
-	@if(Session::has('listMessage'))
-		@foreach(Session::get('listMessage') as $value)
-			new PNotify(
-			{
-				title : '{{Session::get('typeMessage') == 'error' ? 'No se pudo proceder!' : 'Correcto!'}}',
-				text : '{{$value}}',
-				type : '{{Session::get('typeMessage')}}'
-			});
-		@endforeach
-	@endif
+	_urlBase ='{{url('/')}}'
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @yield('js')
 
@@ -235,6 +261,24 @@
 			return false;
 		}
 	});
+</script>
+
+<script>
+    function sendFrmCityInsert() {
+        
+        Swal.fire({
+            title: '¿Desea cambiar su contraseña?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No',
+        }).then((result) => {
+            
+            if (result.isConfirmed) {
+                document.getElementById('frmCityInsert').submit();
+            }
+        });
+    }
 </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 @extends('template.layout')
-@section('titleGeneral', 'Página principal...')
+@section('titleGeneral', ' Página principal usuario..')
 @section('sectionGeneral')
-Hola, este mi archivo index
+    
+
+
 @endsection

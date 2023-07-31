@@ -2,11 +2,13 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\CityController;
+
+use App\Http\Controllers\UserController;
 
 Route::get('/', [IndexController::class, 'actionIndex']);
-
-Route::get('city/getall', [CityController::class, 'actionGetAll']);
-Route::match(['get', 'post'], 'city/insert', [CityController::class, 'actionInsert']);
-Route::get('city/delete/{idCity}', [CityController::class, 'actionDelete']);
-Route::match(['get', 'post'], 'city/update/{idCity}', [CityController::class, 'actionUpdate']);
+Route::get('user/edit', [UserController::class, 'actionEditar'])->name('actionEditar');
+Route::get('user/escribir', [UserController::class, 'actionEscribir'])->name('actionEscribir');
+Route::get('user/login', [UserController::class, 'actionLoguear'])->name('actionLoguear');
+Route::get('user/estado', [UserController::class, 'actionEstado'])->name('actionEstado');
+Route::get('admi/verUsuario', [UserController::class, 'verUsuario'])->name('verUsuario');
+Route::get('admi/verTicket', [UserController::class, 'verTicket'])->name('verTicket');
