@@ -223,13 +223,13 @@ class UserController extends Controller
 	public function verUsuario()
 	{
 
-		return view('admi/verUsuario');
+		return view('admin/verUsuario');
 		
 	}
 	public function verTicket()
 	{
 
-		return view('admi/verTicket');
+		return view('admin/verTicket');
 		
 	}
 }

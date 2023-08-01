@@ -14,8 +14,8 @@ Route::get('user/edit', [UserController::class, 'actionEditar'])->name('actionEd
 Route::get('user/escribir', [UserController::class, 'actionEscribir'])->name('actionEscribir');
 Route::get('user/login', [UserController::class, 'actionLoguear'])->name('actionLoguear');
 Route::get('user/estado', [UserController::class, 'actionEstado'])->name('actionEstado');
-Route::get('admi/verUsuario', [UserController::class, 'verUsuario'])->name('verUsuario');
-Route::get('admi/verTicket', [UserController::class, 'verTicket'])->name('verTicket');
+Route::get('admin/verUsuario', [UserController::class, 'verUsuario'])->name('verUsuario');
+Route::get('admin/verTicket', [UserController::class, 'verTicket'])->name('verTicket');
 
 
 // Routes for the ReportController
@@ -29,3 +29,9 @@ Route::get('picture/getall', [PictureController::class, 'actionGetAll']);
 Route::match(['get', 'post'], 'picture/insert', [PictureController::class, 'actionInsert']);
 Route::get('picture/delete/{idImage}', [PictureController::class, 'actionDelete']);
 Route::match(['get', 'post'], 'picture/update/{idImage}', [PictureController::class, 'actionUpdate']);
+
+
+// Ticket
+Route::get('ticket/problemas', [TicketController::class, 'actionEscribir'])->name('actionEscribir');
+Route::match(['get', 'post'], 'ticket/insert', [TicketController::class, 'actionInsert']);
+Route::get('ticket/estado', [TicketController::class, 'actionEstado'])->name('actionEstado');
